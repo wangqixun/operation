@@ -143,6 +143,7 @@ usermod -a -G groupA user    # 不加 -a 则用户会只属于新的groupA，而
 ```
 
 + 为用户增加root权限
+
 root用户下```vi /etc/sudoers```,添加
 ```
 user_name    ALL=(ALL:ALL) ALL
