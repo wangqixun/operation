@@ -1,3 +1,9 @@
+## 僵尸程序
+### 杀死含有“关键字”的程序
+```
+kill -9 $(ps ax | grep "关键字" | fgrep -v grep | awk '{ print $1 }')
+```
+
 # 挂载硬盘
     sudo fdisk -l
     sudo mkfs -t ext4 /dev/sdb
