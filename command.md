@@ -11,11 +11,13 @@ kill -HUP ppid
 
 ## 逐行分析python耗时
 1. 安装
+
 终端下执行
 ```
 pip install line-profiler
 ```
 2. 标记修饰器
+
 在需要分析性能的函数前面加上修饰器“@profile”
 ```python
 @profile
@@ -24,6 +26,7 @@ def func():
 
 ```
 3. 分析
+
 终端下执行
 ```
 kernprof -l xxxx.py
