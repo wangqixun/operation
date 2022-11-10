@@ -99,14 +99,24 @@ ssh -o ServerAliveInterval=30 wangqixun@sagenaoc.sagenaoc.science
 
     ssh gago_yangguowei@192.168.100.242 -L 8008:localhost:8888
 
-# Docker 
-    nvidia-docker run -ti --shm-size=16g --name=ygw-ml -p 7018:8888 -p 2011:22 -p 6001:6006 -v /data/gago_yangguowei/docker:/workspace -w /workspace ygw:v1 bash
+## Docker 容器
+```
+nvidia-docker run -ti --shm-size=16g --name=ygw-ml -p 7018:8888 -p 2011:22 -p 6001:6006 -v /data/gago_yangguowei/docker:/workspace -w /workspace ygw:v1 bash
 
-    docker start/stop ygw-tf
+docker start/stop ygw-tf
 
-    docker exec -ti -e LANG=C.UTF-8 ygw-tf-nas bash
-    
-    docker rmi $(docker images --quiet --filter "dangling=true")
+docker rmi $(docker images --quiet --filter "dangling=true")
+```
+ + 解决中文编码问题
+ 
+通过下面```-e LANG=C.UTF-8```的方式进入容器
+```
+docker exec -ti -e LANG=C.UTF-8 ygw-tf-nas bash
+```
+或进入容器后，在终端里执行
+```
+export LANG=C.UTF-8
+```
 
 ## docker 容器迁移三部曲
 
