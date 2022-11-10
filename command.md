@@ -5,17 +5,17 @@ kill -9 $(ps ax | grep "关键字" | fgrep -v grep | awk '{ print $1 }')
 ```
 
 ## 逐行分析python耗时
-### 安装
++ 安装
 ```
 pip install line-profiler
 ```
-### 在需要分析性能的函数前面加上修饰器“@profile”
++ 在需要分析性能的函数前面加上修饰器“@profile”
 ```python
 @profile
 def func():
 	pass
 ```
-### 分析
++ 分析
 ```
 kernprof -l xxxx.py
 ```
