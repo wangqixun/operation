@@ -21,7 +21,16 @@ def func():
 kernprof -l xxxx.py
 ```
 
+## 命令行下虚拟屏幕(3DP为例)
+```
+#!/bin/sh
+Xvfb :0 -screen 0 1024x768x24 -ac +extension GLX +render -noreset &
+export DISPLAY=:0.0
+python -c "import vispy; print(vispy.sys_info())"
 
+# 运行
+python main.py --config argument.yml
+```
 
 # 挂载硬盘
     sudo fdisk -l
@@ -118,7 +127,4 @@ sudo service lightdm stop
 sudo bash ./NVIDIA-Linux-x86_64-384.130.run
 
 sudo service lightdm start
-
-# 2080Ti need
-cuda==10 tf==1.13
 
