@@ -46,7 +46,6 @@ python main.py --config argument.yml
 
 ## youtube-dl下载
 [更多资料](https://cloud.tencent.com/developer/article/1510301)
-python 中的命令
 ```python
 import sys
 cmd = "youtube-dl --proxy http://oversea-squid5.sgp.txyun:11080 --max-filesize 500m --write-info-json --playlist-end 10 --min-views 10000 --dateafter now-2000days --max-downloads 10 -i -f 'bestvideo[height<=720]+bestaudio[height<=720]/best[ext=mp4]/best' -o '%s' '%s'" % (target_dir, channel_url)
@@ -69,6 +68,7 @@ Host sage
  IdentityFile ~/.ssh/id_rsa
 ```
 2. 免密登陆
+
 本地电脑下
 ```
 ssh-copy-id sage
@@ -78,6 +78,7 @@ ssh-copy-id sage
 ssh sage
 ```
 + 自动断线解决
+
 本地终端下
 ```
 ssh -o ServerAliveInterval=30 wangqixun@sagenaoc.sagenaoc.science
