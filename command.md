@@ -13,7 +13,8 @@ pip install line-profiler
 ```python
 @profile
 def func():
-	pass
+    pass
+
 ```
 + 分析
 ```
@@ -30,80 +31,80 @@ kernprof -l xxxx.py
     sudo apt-get install ntfs-3g       #对于ntfs的支持
     sudo apt-get install exfat-utils   #对于exfat的支持
 
-	
+    
 ## ssh映射端口到本地 (e.g 将远程8888端口映射到本地8008端口)
-	ssh -p 7969 gago_yangguowei@210.12.48.242 -L 8008:localhost:6000
+    ssh -p 7969 gago_yangguowei@210.12.48.242 -L 8008:localhost:6000
 
-	ssh gago_yangguowei@192.168.100.242 -L 8008:localhost:8888
+    ssh gago_yangguowei@192.168.100.242 -L 8008:localhost:8888
 
 # Docker 
-	nvidia-docker run -ti --shm-size=16g --name=ygw-ml -p 7018:8888 -p 2011:22 -p 6001:6006 -v /data/gago_yangguowei/docker:/workspace -w /workspace ygw:v1 bash
+    nvidia-docker run -ti --shm-size=16g --name=ygw-ml -p 7018:8888 -p 2011:22 -p 6001:6006 -v /data/gago_yangguowei/docker:/workspace -w /workspace ygw:v1 bash
 
-	docker start/stop ygw-tf
+    docker start/stop ygw-tf
 
-	docker exec -ti -e LANG=C.UTF-8 ygw-tf-nas bash
-	
-	docker rmi $(docker images --quiet --filter "dangling=true")
+    docker exec -ti -e LANG=C.UTF-8 ygw-tf-nas bash
+    
+    docker rmi $(docker images --quiet --filter "dangling=true")
 
 ## docker 容器迁移三部曲
 
-	docker commit 8495465a155a ygw:tf   # 从 container 8495465a155a  生成镜像 ygw:tf     ### docker commit --help
+    docker commit 8495465a155a ygw:tf   # 从 container 8495465a155a  生成镜像 ygw:tf     ### docker commit --help
 
-	docker save -o ./ygw-tf.tar ygw:tf    # 打包镜像 ygw:tf 到文件 ./ygw-tf.tar       ### docker save --help
+    docker save -o ./ygw-tf.tar ygw:tf    # 打包镜像 ygw:tf 到文件 ./ygw-tf.tar       ### docker save --help
 
-	docker load -i ./ygw-tf.tar    # 从 ygw-tf.tar 文件中加载生成镜像        ### docker load --help
+    docker load -i ./ygw-tf.tar    # 从 ygw-tf.tar 文件中加载生成镜像        ### docker load --help
 
 ## docker push三部曲
-	docker login
-	docker commit 8495465a155a 18611684528/tf13_gpu-py3   # 从 container 8495465a155a 生成镜像 18611684528/tf13_gpu-py3
-	docker push 18611684528/tf13_gpu-py3
+    docker login
+    docker commit 8495465a155a 18611684528/tf13_gpu-py3   # 从 container 8495465a155a 生成镜像 18611684528/tf13_gpu-py3
+    docker push 18611684528/tf13_gpu-py3
 
 # scp
-	scp source dest
+    scp source dest
 
-	scp -r ./model_weights/ gago_yangguowei@192.168.100.189:~/code/model_weights/
+    scp -r ./model_weights/ gago_yangguowei@192.168.100.189:~/code/model_weights/
 
 # LINUX文件、用户与组管理
 ## 添加用户
-	sudo useradd gago_wangqixun -m -d /data/gago_wangqixun  -s /bin/bash -G docker
+    sudo useradd gago_wangqixun -m -d /data/gago_wangqixun  -s /bin/bash -G docker
 
 ## 修改文件(夹)拥有者
-	sudo chown user_name:group_name file_dir_name
+    sudo chown user_name:group_name file_dir_name
 
 ## 添加用户到组
-	usermod -a -G groupA user    # 不加 -a 则用户会只属于新的groupA，而退出其他组。
+    usermod -a -G groupA user    # 不加 -a 则用户会只属于新的groupA，而退出其他组。
 
 
 
 # NAS 
 # mount/umount nas
-	mount -t cifs //192.168.100.194/yangguowei /data/gago_yangguowei/docker/nas  -o vers=2.0,username=yangguowei,password=ygw@@123,dir_mode=0700,file_mode=0700,uid=gago_yangguowei,gid=gago_yangguowei,sec=ntlmssp
-	
-	umount /data/gago_yangguowei/docker/nas  或者 umount //192.168.100.194/yangguowei		
-	mount.cifs  //192.168.100.194/yangguowei /data/gago_yangguowei/docker/nas/ -o user=yangguowei
+    mount -t cifs //192.168.100.194/yangguowei /data/gago_yangguowei/docker/nas  -o vers=2.0,username=yangguowei,password=ygw@@123,dir_mode=0700,file_mode=0700,uid=gago_yangguowei,gid=gago_yangguowei,sec=ntlmssp
+    
+    umount /data/gago_yangguowei/docker/nas  或者 umount //192.168.100.194/yangguowei		
+    mount.cifs  //192.168.100.194/yangguowei /data/gago_yangguowei/docker/nas/ -o user=yangguowei
 
 # Conda
 
-	conda info 查看conda 配置信息
-	
+    conda info 查看conda 配置信息
+    
 ## conda 源更换
 
-	conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-	conda config --set show_channel_urls yes
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+    conda config --set show_channel_urls yes
 
 # 清除僵尸进程Zombie
-	ps -A -ostat,ppid,pid,cmd | grep -e '^[zZ]' 
-	kill -HUP ppid
+    ps -A -ostat,ppid,pid,cmd | grep -e '^[zZ]' 
+    kill -HUP ppid
 
 
 # pip
 ## pip 源更换
-	修改或创建
-	~/.pip/pip.conf 
+    修改或创建
+    ~/.pip/pip.conf 
 
-	添加
-	[global]
-	index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+    添加
+    [global]
+    index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 
