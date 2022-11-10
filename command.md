@@ -10,23 +10,27 @@ kill -HUP ppid
 ```
 
 ## 逐行分析python耗时
-+ 安装
+1. 安装
+终端下执行
 ```
 pip install line-profiler
 ```
-+ 在需要分析性能的函数前面加上修饰器“@profile”
+2. 标记修饰器
+在需要分析性能的函数前面加上修饰器“@profile”
 ```python
 @profile
 def func():
     pass
 
 ```
-+ 分析
+3. 分析
+终端下执行
 ```
 kernprof -l xxxx.py
 ```
 
 ## 命令行下虚拟屏幕(3DP为例)
+终端下执行
 ```
 #!/bin/sh
 Xvfb :0 -screen 0 1024x768x24 -ac +extension GLX +render -noreset &
@@ -39,8 +43,11 @@ python main.py --config argument.yml
 
 ## youtube-dl下载
 [更多资料](https://cloud.tencent.com/developer/article/1510301)
+python 中的命令
 ```python
-"youtube-dl --proxy http://oversea-squid5.sgp.txyun:11080 --max-filesize 500m --write-info-json --playlist-end 10 --min-views 10000 --dateafter now-2000days --max-downloads 10 -i -f 'bestvideo[height<=720]+bestaudio[height<=720]/best[ext=mp4]/best' -o '%s' '%s'" % (target_dir, channel_url)
+import sys
+cmd = "youtube-dl --proxy http://oversea-squid5.sgp.txyun:11080 --max-filesize 500m --write-info-json --playlist-end 10 --min-views 10000 --dateafter now-2000days --max-downloads 10 -i -f 'bestvideo[height<=720]+bestaudio[height<=720]/best[ext=mp4]/best' -o '%s' '%s'" % (target_dir, channel_url)
+sys.system(cmd)
 ```
 
 
