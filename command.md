@@ -32,6 +32,13 @@ python -c "import vispy; print(vispy.sys_info())"
 python main.py --config argument.yml
 ```
 
+## youtube-dl下载
+[更多资料](https://cloud.tencent.com/developer/article/1510301)
+```python
+"youtube-dl --proxy http://oversea-squid5.sgp.txyun:11080 --max-filesize 500m --write-info-json --playlist-end 10 --min-views 10000 --dateafter now-2000days --max-downloads 10 -i -f 'bestvideo[height<=720]+bestaudio[height<=720]/best[ext=mp4]/best' -o '%s' '%s'" % (target_dir, channel_url)
+```
+
+
 # 挂载硬盘
     sudo fdisk -l
     sudo mkfs -t ext4 /dev/sdb
