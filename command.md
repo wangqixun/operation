@@ -69,7 +69,7 @@ Host sage
 ```
 2. 免密登陆
 
-本地电脑下
+本地终端下
 ```
 ssh-copy-id sage
 ```
