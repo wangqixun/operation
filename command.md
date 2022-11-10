@@ -1,7 +1,12 @@
 ## 僵尸程序
-### 杀死含有“关键字”的程序
++ 杀死含有“关键字”的程序
 ```
 kill -9 $(ps ax | grep "关键字" | fgrep -v grep | awk '{ print $1 }')
+```
++ 清除僵尸进程Zombie
+```
+ps -A -ostat,ppid,pid,cmd | grep -e '^[zZ]' 
+kill -HUP ppid
 ```
 
 ## 逐行分析python耗时
@@ -138,9 +143,6 @@ ssh -o ServerAliveInterval=30 wangqixun@sagenaoc.sagenaoc.science
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
     conda config --set show_channel_urls yes
 
-# 清除僵尸进程Zombie
-    ps -A -ostat,ppid,pid,cmd | grep -e '^[zZ]' 
-    kill -HUP ppid
 
 
 # pip
