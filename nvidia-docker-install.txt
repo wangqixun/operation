@@ -1,0 +1,88 @@
+
+apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+
+
+
+lsb_release -cs
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+
+
+sudo apt-get update
+sudo apt-get install docker-ce -y
+
+
+
+
+
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+
+
+
+
+sudo apt-get install -y nvidia-docker2
+sudo pkill -SIGHUP dockerd
+
+
+
+# Test
+# docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+
+
+# docker pull 加速 - 第一种方法
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://v7zkuy80.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+
+# error
+sudo tee /etc/docker/daemon.json <<EOF
+{
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+}
+EOF
+sudo pkill -SIGHUP dockerd
+
+
+
+
+# docker pull 加速 - 第二种方法
+sudo vim /etc/docker/daemon.json
+
+最后面写入：
+
+{
+  "registry-mirrors": [
+    "https://9cpn8tt6.mirror.aliyuncs.com",
+    "https://8bhew391.mirror.aliyuncs.com",
+    "https://almtd3fa.mirror.aliyuncs.com",
+    "https://hccwwfjl.mirror.aliyuncs.com",
+    "https://registry.docker-cn.com",
+    "http://hub-mirror.c.163.com"
+  ]
+}
+
+保存
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+
+
