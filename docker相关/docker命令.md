@@ -1,4 +1,5 @@
 # docker命令
+<br>
 
 ## 容器
 + #### 生成与启动
@@ -19,9 +20,7 @@ export LANG=C.UTF-8
 ## 容器迁移三部曲
 ```
 docker commit 8495465a155a ygw:tf   # 从 container 8495465a155a  生成镜像 ygw:tf     ### docker commit --help
-
 docker save -o ./ygw-tf.tar ygw:tf    # 打包镜像 ygw:tf 到文件 ./ygw-tf.tar       ### docker save --help
-
 docker load -i ./ygw-tf.tar    # 从 ygw-tf.tar 文件中加载生成镜像        ### docker load --help
 ```
 
