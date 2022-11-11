@@ -64,16 +64,6 @@ sys.system(cmd)
     sudo apt-get install ntfs-3g       #对于ntfs的支持
     sudo apt-get install exfat-utils   #对于exfat的支持
 
-    
-
-
-
-# scp
-    scp source dest
-
-    scp -r ./model_weights/ gago_yangguowei@192.168.100.189:~/code/model_weights/
-
-
 
 
 # NAS 
