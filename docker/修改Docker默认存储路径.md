@@ -7,7 +7,8 @@
 sudo docker info
 ```
 可以查看程序信息，红框里就是默认的存储目录，把它改了就完事了
-![img](operation/docker相关/imgs/00ce906bfe85e9d35ed17c0723b3de45.png)
+
+![img](operation/docker/imgs/00ce906bfe85e9d35ed17c0723b3de45.png)
 
 ## 1. 修改
 
@@ -30,5 +31,7 @@ sudo systemctl restart docker
 ```
 sudo docker info
 ```
-![img](operation/docker相关/imgs/09d69c0e279c35304899e211af682ada.png)
+
+![img](operation/docker/imgs/09d69c0e279c35304899e211af682ada.png)
+
 可以看到目录已经变成了设定的/var/www/dockerdata
