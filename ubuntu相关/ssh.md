@@ -29,3 +29,12 @@ ssh sage
 ssh -o ServerAliveInterval=30 wangqixun@sagenaoc.sagenaoc.science
 ```
 
+
+
++ #### 端口映射
+```
+# 远程8888 -> 本地8008
+ssh -p 7969 gago_yangguowei@192.168.100.242 -L 8008:localhost:8888
+```
+
+

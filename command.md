@@ -53,36 +53,7 @@ sys.system(cmd)
 ```
 
 
-## ssh代号免密登陆
-1. 添加相关信息
-```
-vi .ssh/config
-```
 
-```
-# 添加需要连接的远程机器
-Host sage
- hostname sage.sagenaoc.science
- port 22
- user wangqixun
- IdentityFile ~/.ssh/id_rsa
-```
-2. 免密登陆
-
-本地终端下
-```
-ssh-copy-id sage
-```
-3. 以后每次连
-```
-ssh sage
-```
-+ 自动断线解决
-
-本地终端下
-```
-ssh -o ServerAliveInterval=30 wangqixun@sagenaoc.sagenaoc.science
-```
 
 
 # 挂载硬盘
@@ -94,10 +65,6 @@ ssh -o ServerAliveInterval=30 wangqixun@sagenaoc.sagenaoc.science
     sudo apt-get install exfat-utils   #对于exfat的支持
 
     
-## ssh映射端口到本地 (e.g 将远程8888端口映射到本地8008端口)
-    ssh -p 7969 gago_yangguowei@210.12.48.242 -L 8008:localhost:6000
-
-    ssh gago_yangguowei@192.168.100.242 -L 8008:localhost:8888
 
 
 
