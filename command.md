@@ -106,28 +106,7 @@ ssh -o ServerAliveInterval=30 wangqixun@sagenaoc.sagenaoc.science
 
     scp -r ./model_weights/ gago_yangguowei@192.168.100.189:~/code/model_weights/
 
-# LINUX文件、用户与组管理
-+ 添加用户
-```
-sudo useradd gago_wangqixun -m -d /data/gago_wangqixun  -s /bin/bash -G docker
-```
 
-+ 修改文件(夹)拥有者
-```
-sudo chown user_name:group_name file_dir_name
-```
-
-+ 添加用户到组
-```
-usermod -a -G groupA user    # 不加 -a 则用户会只属于新的groupA，而退出其他组。
-```
-
-+ 为用户增加root权限
-
-root用户下```vi /etc/sudoers```,添加
-```
-user_name    ALL=(ALL:ALL) ALL
-```
 
 
 # NAS 
