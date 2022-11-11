@@ -8,8 +8,9 @@ nvidia-docker run -ti --shm-size=16g --name=ygw-ml -p 7018:8888 -p 2011:22 -p 60
 
 docker start/stop ygw-tf
 ```
- + #### 解决中文编码问题
- ```
++ #### 解决中文编码问题
++ + 临时
+```
 docker exec -ti -e LANG=C.UTF-8 ygw-tf-nas bash
 ```
 或进入容器后，在终端里执行
