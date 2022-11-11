@@ -8,8 +8,7 @@ nvidia-docker run -ti --shm-size=16g --name=ygw-ml -p 7018:8888 -p 2011:22 -p 60
 
 docker start/stop ygw-tf
 ```
-+ #### 解决中文编码问题
-    + 临时
++ #### 解决中文编码问题（临时）
 ```
 docker exec -ti -e LANG=C.UTF-8 ygw-tf-nas bash
 ```
@@ -17,6 +16,28 @@ docker exec -ti -e LANG=C.UTF-8 ygw-tf-nas bash
 ```
 export LANG=C.UTF-8
 ```
++ #### 解决中文编码问题（永久）
+```
+vim /etc/profile
+```
+在最后添加下面的代码
+```
+export LANG=C.UTF-8
+```
+然后
+```
+source /etc/profile
+```
+为了每次进入docker容器都能执行 source /etc/profile 命令，把这行命令加到.zshrc（或.bashrc）中即可
+```
+vi ~/.bashrc
+```
+在最后添加下面的代码
+```
+source /etc/profile
+```
+
+
 
 ## 容器迁移三部曲
 ```
