@@ -11,7 +11,7 @@ docker start/stop ygw-tf
  ```
 docker exec -ti -e LANG=C.UTF-8 ygw-tf-nas bash
 ```
-    或进入容器后，在终端里执行
+或进入容器后，在终端里执行
 ```
 export LANG=C.UTF-8
 ```
