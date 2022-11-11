@@ -16,10 +16,12 @@ sudo docker info
 ```
 sudo vi /etc/docker/daemon.json
 ```
-默认情况下这个配置文件是没有的，这里实际也就是新建一个，然后写入以下内容：
+默认情况下这个配置文件是没有的，这里实际也就是新建一个，然后写入以下内容
+```
 {
   "data-root": "/var/www/dockerdata"
 }
+```
 
 ## 2. 重启docker服务
 
