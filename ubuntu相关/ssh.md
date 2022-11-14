@@ -1,6 +1,13 @@
 # SSH
 <br>
 
++ #### 重启
+```
+service ssh start
+```
+
+
+
 + #### 代号+免密登陆
 ```
 vi .ssh/config
