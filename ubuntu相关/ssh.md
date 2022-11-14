@@ -1,6 +1,25 @@
 # SSH
 <br>
 
+## 配置端口
+```bash
+sudo mkdir /run/sshd
+sudo chown root:root -R /run/sshd
+sudo chmod 644 -R /run/sshd
+# 设置端口，这里以10022为例
+sudo /usr/sbin/sshd -p 10022
+```
+设置密码认证权限
+```bash
+vi /etc/ssh/sshd_config
+```
+修改
+```text
+修改 PasswordAuthentication no -> yes
+```
+随后重启ssh```sudo service ssh start```
+
+
 + #### 重启
 ```
 service ssh start
